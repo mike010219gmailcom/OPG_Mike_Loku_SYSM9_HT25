@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
-    internal class User
+    public class User
     {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
+        public string DisplayName { get; set; } 
+
     }
 }
