@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
+            UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
+            
 
         }
 

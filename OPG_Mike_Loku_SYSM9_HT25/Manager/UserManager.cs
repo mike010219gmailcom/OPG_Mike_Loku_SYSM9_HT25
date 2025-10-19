@@ -30,6 +30,46 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        // Konstruktor
+        public UserManager()
+        {
+            _users = new List<User>();
+        }
+
+        public void AddUser(User user)
+        {
+            Users.Add(new User
+            {
+                Username = "admin",
+                DisplayName = "Administrator",
+                Role = "Admin",
+                Password = "password"
+            });
+
+            Users.Add(new User
+            {
+                Username = "user",
+                DisplayName = "Standard User",
+                Role = "User",
+                Password = "password"
+            });
+
+        }
+
+        public bool Login(string username, string password)
+        {
+            foreach (User u in Users)
+            {
+                if (u.Username == username && u.Password == password)
+                {
+                    CurrentUser = u;
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
