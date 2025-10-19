@@ -20,5 +20,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         {
             InitializeComponent();
         }
+
+        private void LoginMainWindow(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Register(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
