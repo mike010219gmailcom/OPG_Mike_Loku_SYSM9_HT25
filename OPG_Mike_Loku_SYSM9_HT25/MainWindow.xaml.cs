@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,12 +15,14 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
