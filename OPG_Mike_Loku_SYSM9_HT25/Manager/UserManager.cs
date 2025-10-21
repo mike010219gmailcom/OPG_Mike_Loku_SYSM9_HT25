@@ -30,6 +30,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        public string Username { get; set; }
+        public string Password { get; set; }
+
         
         // Konstruktor
         public UserManager()
@@ -58,11 +61,22 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 
         }
 
-        public bool Login(string username, string password)
+        public bool RegisterUser(User newUser)
+        {
+            if (Users.Any(u => u.Username == newUser.Username))
+            {
+                return false; 
+            }
+            Users.Add(newUser);
+            return true; 
+        }
+
+
+        public bool Login()
         {
             foreach (User u in Users)
             {
-                if (u.Username == username && u.Password == password)
+                if (u.Username == Username && u.Password == Password)
                 {
                     CurrentUser = u;
 

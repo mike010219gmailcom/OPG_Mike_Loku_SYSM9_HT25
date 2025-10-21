@@ -1,4 +1,5 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
@@ -30,13 +31,23 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
-            bool loginSuccess = userManager.Login(Username, Password);
+            bool loginSuccess = userManager.Login();
+
+            if (loginSuccess)
+            {
+                MessageBox.Show($"Välkommen {userManager.CurrentUser.DisplayName}!");
+            }
+
+            else
+            {
+                MessageBox.Show("Fel användarnamn eller lösenord.");
+            }
 
         }
 
         private void Register(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
