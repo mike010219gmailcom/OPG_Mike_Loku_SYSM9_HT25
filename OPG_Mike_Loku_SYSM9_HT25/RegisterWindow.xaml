@@ -9,11 +9,11 @@
     <StackPanel Orientation="Vertical" Background="LightBlue">
         <TextBlock Text="Registrera dig" FontSize="36" HorizontalAlignment="Center" Margin="20"/>
         <TextBlock Text="Användarnamn" HorizontalAlignment="Center"/>
-        <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                 Width="200" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+        <TextBox x:Name="UsernameInput" Width="200" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+        
         <TextBlock Text="Lösenord" HorizontalAlignment="Center"/>
-        <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                 Width="200" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+        <TextBox x:Name="PasswordInput" Width="200" HorizontalAlignment="Center" Margin="0,5,0,5"/>
+        
         <TextBlock Text="Välj land" HorizontalAlignment="Center" Margin="0,5,0,5"/>
         <ComboBox Name="Country" Width="300">
             <ComboBoxItem Content="Sverige"/>

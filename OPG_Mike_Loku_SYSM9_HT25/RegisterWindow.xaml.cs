@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using OPG_Mike_Loku_SYSM9_HT25.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,34 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
+
+            string username = UsernameInput.Text;
+            string password = PasswordInput.Text;
+            string country = (Country.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+
+            User newUser = new User
+            {
+                Username = username,
+                Password = password,
+                Role = "User",
+                DisplayName = username
+            };
+
+            bool NewUserSucces = userManager.RegisterUser(newUser);
+
+            if (NewUserSucces)
+            {
+                MessageBox.Show($"Välkommen {username}!\nDu är nu registrerad.");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Användarnamnet används redan, välj ett annat");
+            }
+                            
+
 
         }
     }
