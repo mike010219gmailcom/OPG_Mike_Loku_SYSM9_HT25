@@ -30,13 +30,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        
         // Konstruktor
         public UserManager()
         {
             _users = new List<User>();
+            ExistingUsers();
         }
 
-        public void AddUser(User user)
+        private void ExistingUsers()
         {
             Users.Add(new User
             {

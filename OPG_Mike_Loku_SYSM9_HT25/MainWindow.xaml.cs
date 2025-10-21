@@ -21,6 +21,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         public MainWindow()
         {
             InitializeComponent();
+            UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
+            DataContext = userManager;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -28,7 +30,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
-            
+            bool loginSuccess = userManager.Login(Username, Password);
 
         }
 
