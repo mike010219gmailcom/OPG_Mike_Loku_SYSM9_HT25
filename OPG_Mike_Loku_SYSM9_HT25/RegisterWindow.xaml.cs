@@ -26,7 +26,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             InitializeComponent();
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
 

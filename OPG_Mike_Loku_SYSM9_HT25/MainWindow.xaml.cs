@@ -47,7 +47,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            
+            // MessageBox.Show("funkar");
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
         }
     }
 }
