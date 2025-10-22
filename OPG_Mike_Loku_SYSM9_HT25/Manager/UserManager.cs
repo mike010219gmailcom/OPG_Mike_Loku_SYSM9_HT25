@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 {
-    internal class UserManager : INotifyPropertyChanged
+    public class UserManager : INotifyPropertyChanged
     {
         private List<User> _users;
 
-        public List <User> Users
+        public List<User> Users
         {
             get { return _users; }
             set { _users = value; }
@@ -33,7 +33,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         public string Username { get; set; }
         public string Password { get; set; }
 
-        
+
         // Konstruktor
         public UserManager()
         {
@@ -54,7 +54,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             Users.Add(new User
             {
                 Username = "user",
-                DisplayName = "Standard User",
+                DisplayName = Username,
                 Role = "User",
                 Password = "password"
             });
@@ -65,10 +65,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         {
             if (Users.Any(u => u.Username == newUser.Username))
             {
-                return false; 
+                return false;
             }
             Users.Add(newUser);
-            return true; 
+            return true;
         }
 
 

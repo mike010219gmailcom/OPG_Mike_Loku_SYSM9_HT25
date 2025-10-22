@@ -31,11 +31,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
+            
             bool loginSuccess = userManager.Login();
 
             if (loginSuccess)
             {
-                MessageBox.Show($"Välkommen {userManager.CurrentUser.DisplayName}!");
+                MessageBox.Show($"Välkommen {userManager.CurrentUser.Role}!");
+                RecipeListWindow recipeListWindow = new RecipeListWindow();
+                recipeListWindow.Show();
+                this.Close();
             }
 
             else
