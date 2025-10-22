@@ -19,13 +19,15 @@
                        HorizontalAlignment="Right"
                        Margin="0,0,10,0"
                        DockPanel.Dock="Right"/>
+            <Button x:Name="UserDetails" Content="Dina Uppgifter" Width="100" Height="20" DockPanel.Dock="Left"
+                    VerticalAlignment="Center" Click="UserDetails_Click"/>
 
         </DockPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Background="LightBlue">
             
             <TextBlock Text="Receptlistan" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20"/>
-
+            
         </StackPanel>
     </Grid>
 

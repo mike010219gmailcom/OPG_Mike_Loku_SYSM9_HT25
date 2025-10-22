@@ -16,20 +16,15 @@ using System.Windows.Shapes;
 namespace OPG_Mike_Loku_SYSM9_HT25
 {
     /// <summary>
-    /// Interaction logic for RecipeListWindow.xaml
+    /// Interaction logic for UserDetails.xaml
     /// </summary>
-    public partial class RecipeListWindow : Window
+    public partial class UserDetails : Window
     {
-        public RecipeListWindow()
+        public UserDetails()
         {
             InitializeComponent();
             DataContext = (UserManager)Application.Current.Resources["UserManager"];
-        }
 
-        private void UserDetails_Click(object sender, RoutedEventArgs e)
-        {
-            UserDetails userDetails = new UserDetails();
-            userDetails.Show();
         }
     }
 }
