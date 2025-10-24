@@ -21,19 +21,42 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class AddRecipeWindow : Window
     {
-
+        // Attribut för att hålla det nya receptet
         public RecipeModel NewRecipe { get; set; } = new RecipeModel();
 
-        public AddRecipeWindow()
+        // Referenser till RecipeManager och nuvarande användare
+        private readonly RecipeManager _recipeManager;
+        private readonly User _currentUser;
+
+        // Konstruktor
+        public AddRecipeWindow(RecipeManager recipeManager, User currentUser)
         {
             InitializeComponent();
+            _recipeManager = recipeManager;
+            _currentUser = currentUser;
+
+            DataContext = this;
         }
 
+        // Kod för knappen
         private void SaveNewRecipe_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrWhiteSpace(NewRecipe.Title) || string.IsNullOrWhiteSpace(NewRecipe.Ingredients)
+                || string.IsNullOrWhiteSpace(NewRecipe.Category))
+            {
+                MessageBox.Show("Du måste ange Titel och Ingredienser");
+            }
+            else
+            {
+                NewRecipe.CreatedBy = _currentUser.Username;
+                NewRecipe.Date = DateTime.Now;
+                _recipeManager.AddRecipe(NewRecipe);
+                MessageBox.Show("Nytt recept tillagt!");
+                this.Close();
+            }
         }
 
+        // Kod för avbryt knappen
         private void CancelAdd_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Skapande av recept avbruten.");

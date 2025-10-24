@@ -9,7 +9,7 @@ using OPG_Mike_Loku_SYSM9_HT25.Models;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 {
-    internal class RecipeManager : INotifyPropertyChanged
+    public class RecipeManager : INotifyPropertyChanged
     {
         private ObservableCollection<RecipeModel> _recipe = new ObservableCollection<RecipeModel>();
         public ObservableCollection<RecipeModel> Recipe
@@ -25,6 +25,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         public void AddRecipe(RecipeModel recipe)
         {
             Recipe.Add(recipe);
+            OnPropertyChanged(nameof(Recipe));
         }
 
         public void RemoveRecipe (RecipeModel recipe)
