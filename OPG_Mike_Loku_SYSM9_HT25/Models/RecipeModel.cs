@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
-    internal class RecipeModel
+    public class RecipeModel
     {
         public string Title {  get; set; }
         public string Ingredients { get; set; }

@@ -21,13 +21,16 @@
                        DockPanel.Dock="Right"/>
             <Button x:Name="UserDetails" Content="Dina Uppgifter" Width="100" Height="20" DockPanel.Dock="Left"
                     VerticalAlignment="Center" Click="UserDetails_Click"/>
+            <Button x:Name="SignOut" Content="Logga Ut" Width="100" Height="20" DockPanel.Dock="Right"
+                    VerticalAlignment="Center" Click="SignOut_Click"/>
 
         </DockPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Background="LightBlue">
             
             <TextBlock Text="Receptlistan" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20"/>
-            
+            <Button x:Name="AddRecipe" Content="Lägg till recept" Width="150" Height="30" 
+                    HorizontalAlignment="left" Margin="10" Click="AddRecipe_Click"/>
         </StackPanel>
     </Grid>
 

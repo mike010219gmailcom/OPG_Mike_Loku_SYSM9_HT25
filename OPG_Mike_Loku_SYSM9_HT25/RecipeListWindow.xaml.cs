@@ -31,5 +31,18 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             UserDetails userDetails = new UserDetails();
             userDetails.Show();
         }
+
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void AddRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecipeWindow addRecipeWindow = new AddRecipeWindow();
+            addRecipeWindow.Show();
+        }
     }
 }
