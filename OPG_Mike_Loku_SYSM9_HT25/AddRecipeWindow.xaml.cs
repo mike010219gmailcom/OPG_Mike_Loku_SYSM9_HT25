@@ -44,7 +44,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             if (string.IsNullOrWhiteSpace(NewRecipe.Title) || string.IsNullOrWhiteSpace(NewRecipe.Ingredients)
                 || string.IsNullOrWhiteSpace(NewRecipe.Category))
             {
-                MessageBox.Show("Du måste ange Titel och Ingredienser");
+                MessageBox.Show("Du måste ange Titel, Ingredienser och Kategori");
             }
             else
             {

@@ -26,5 +26,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             DataContext = (UserManager)Application.Current.Resources["UserManager"];
 
         }
+
+        private void UpdateDetails_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
