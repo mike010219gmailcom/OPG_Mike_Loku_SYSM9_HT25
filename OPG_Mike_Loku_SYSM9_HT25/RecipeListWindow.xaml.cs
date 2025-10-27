@@ -51,5 +51,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             AddRecipeWindow addRecipeWindow = new AddRecipeWindow(recipeManager, userManager.CurrentUser);
             addRecipeWindow.Show();
         }
+
+        private void Details_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
