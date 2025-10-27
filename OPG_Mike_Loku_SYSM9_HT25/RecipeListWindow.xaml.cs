@@ -1,4 +1,5 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +19,23 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// <summary>
     /// Interaction logic for RecipeListWindow.xaml
     /// </summary>
+    /// 
+    
     public partial class RecipeListWindow : Window
     {
+        public UserManager userManager { get; set; }
+        public RecipeManager recipeManager { get; set; }
         public RecipeListWindow()
         {
             InitializeComponent();
-            DataContext = (UserManager)Application.Current.Resources["UserManager"];
+            userManager = (UserManager)Application.Current.Resources["UserManager"];
+            recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
+            DataContext = userManager;
         }
 
         private void UserDetails_Click(object sender, RoutedEventArgs e)
         {
-            UserDetails userDetails = new UserDetails();
+            UserDetails userDetails = new UserDetails(userManager);
             userDetails.Show();
         }
 
@@ -41,7 +48,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
-            AddRecipeWindow addRecipeWindow = new AddRecipeWindow();
+            AddRecipeWindow addRecipeWindow = new AddRecipeWindow(recipeManager, userManager.CurrentUser);
             addRecipeWindow.Show();
         }
     }

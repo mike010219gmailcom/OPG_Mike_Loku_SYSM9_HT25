@@ -20,16 +20,72 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class UserDetails : Window
     {
-        public UserDetails()
+        // props för att hålla nya detaljer
+        private readonly UserManager _userManager;
+        private string NewUsername { get; set; }
+        private string NewPassword { get; set; }
+        private string ConfirmPassword { get; set; } 
+        private string SelectedCountry { get; set; }
+
+        // konstruktor
+        public UserDetails(UserManager userManager)
         {
             InitializeComponent();
-            DataContext = (UserManager)Application.Current.Resources["UserManager"];
 
+            _userManager = userManager;
+            DataContext = this;
+            DataContext = userManager.CurrentUser;
         }
 
         private void UpdateDetails_Click(object sender, RoutedEventArgs e)
         {
+            var currentUser = _userManager.CurrentUser;
 
+            MessageBox.Show($"Inloggad: {currentUser.DisplayName}");
+
+            // Kontrollera användarnamn
+            if (string.IsNullOrWhiteSpace(NewUsername) || NewUsername.Length < 3)
+            {
+                MessageBox.Show("Användarnamnet måste vara minst 3 tecken");
+                return;
+            }
+
+            // Kolla om namnet är taget
+            if (_userManager.Users.Any(u => u.Username == NewUsername && u != currentUser))
+            {
+                MessageBox.Show("Användarnamnet är taget");
+                return;
+            }
+
+            // Kontrollera lösenord
+            if (string.IsNullOrWhiteSpace(NewPassword) || NewPassword.Length < 5)
+            {
+                MessageBox.Show("Lösenordet måste vara minst 5 tecken");
+                return;
+            }
+            // Bekräfta lösenord
+            if (NewPassword != ConfirmPassword)
+            {
+                MessageBox.Show("Lösenorden matchar inte");
+                return;
+            }
+
+            // Spara valt land
+            var selectedCountry = (Country.SelectedItem as ComboBoxItem)?.Content?.ToString();
+
+            // Uppdatera
+            currentUser.Username = NewUsername;
+            currentUser.Password = NewPassword;
+            currentUser.Country = selectedCountry ?? currentUser.Country;
+
+            MessageBox.Show("Ändringar sparade");
+            Close();
+        }
+
+        private void CancelUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Ändringar avbrutet");
+            this.Close();
         }
     }
 }

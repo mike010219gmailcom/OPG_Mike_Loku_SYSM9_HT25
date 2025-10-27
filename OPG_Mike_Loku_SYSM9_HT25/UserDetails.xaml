@@ -44,6 +44,9 @@
             <Button x:Name="UpdateDetails" Content="Uppdatera Uppgifter" Width="150" Height="30" 
                     HorizontalAlignment="Center" Margin="10" Click="UpdateDetails_Click"/>
 
+            <Button x:Name="CancelUpdate" Content="Avbryt" Width="100" Height="20" 
+                    HorizontalAlignment="Center" Margin="5" Click="CancelUpdate_Click"/> 
+
 
         </StackPanel>
 

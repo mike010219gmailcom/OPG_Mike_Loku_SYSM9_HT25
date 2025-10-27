@@ -12,6 +12,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
         public string Password { get; set; }
         public string Role { get; set; }
         public string DisplayName { get; set; } 
+        public string Country { get; set; }
+        public string CurrentUser { get; set; }
 
     }
 }
