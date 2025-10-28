@@ -21,10 +21,14 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class RecipeDetailsWindow : Window
     {
+        // Referenser till RecipeManager, receptet och nuvarande användare
+        // bool för att kontrollera redigering
         private readonly RecipeManager _recipeManager;
         private readonly RecipeModel _recipe;
         private readonly User _currentUser;
         private bool Editing = false;
+
+        // Konstruktor
         public RecipeDetailsWindow(User currentUser, RecipeModel recipe, RecipeManager recipeManager)
         {
             InitializeComponent();
@@ -35,23 +39,52 @@ namespace OPG_Mike_Loku_SYSM9_HT25
            
         }
 
+        // Kod för redigera knappen
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            // Kontrollera om användaren är skaparen eller en administratör
             if (_currentUser.Username != _recipe.CreatedBy && !_currentUser.IsAdmin)
-
-                CategoryBox.IsReadOnly = false;
+            {
+                MessageBox.Show("Endast skaparen eller en administratör kan redigera detta recept.");
+                return;
+            }
+            else
+            {
+                Editing = true;
+            }
+            // Aktivera redigeringsläge
+            CategoryBox.IsReadOnly = false;
             TitleBox.IsReadOnly = false;
             IngredientsBox.IsReadOnly = false;
             InstructionsBox.IsReadOnly = false;
             SaveEdits.IsEnabled = true;
-            
+
+            Edit.Visibility = Visibility.Collapsed;
+            SaveEdits.IsEnabled = true;
+
 
         }
 
         private void SaveEdits_Click(object sender, RoutedEventArgs e)
         {
+            // Kontrollera input
+            if (string.IsNullOrWhiteSpace(TitleBox.Text) || string.IsNullOrWhiteSpace(IngredientsBox.Text)
+                || string.IsNullOrWhiteSpace(CategoryBox.Text) || string.IsNullOrWhiteSpace(IngredientsBox.Text))
+            {
+                MessageBox.Show("Du måste ange Titel, Ingredienser, Instruktioner och Kategori");
+                return;
+            }
 
+            // Spara ändringarna
+            _recipe.Title = TitleBox.Text;
+            _recipe.Ingredients = IngredientsBox.Text;
+            _recipe.Instructions = InstructionsBox.Text;
+            _recipe.Category = CategoryBox.Text;
+            _recipe.Date = DateTime.Now;
+            _recipeManager.UpdateRecipe(_recipe);
+
+            MessageBox.Show("Receptet har uppdaterats");
+            this.Close();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
