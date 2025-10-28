@@ -16,4 +16,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
         public string CurrentUser { get; set; }
 
     }
+
+    public class Admin : User
+    {
+        
+    }
 }

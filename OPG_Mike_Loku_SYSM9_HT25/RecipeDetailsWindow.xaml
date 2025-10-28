@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:OPG_Mike_Loku_SYSM9_HT25"
         mc:Ignorable="d"
         Title="RecipeDetailsWindow" Height="450" Width="800">
-    <Grid>
-        <Grid Background="LightBlue">
-            <Grid.RowDefinitions>
+    
+    <Grid Background="LightBlue">
+           <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+           </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Detaljer" FontSize="26" FontWeight="Bold"
                    HorizontalAlignment="Center" Margin="10,10,0,10"/>
@@ -45,12 +45,12 @@
                 <Button x:Name="Edit" Content="Redigera" Width="100" Height="30" 
                         HorizontalAlignment="Center" Margin="10" Click="Edit_Click"/>
                 <Button x:Name="SaveEdits" Content="Spara ändringar" Width="100" Height="30"
-                        HorizontalAlignment="Center" Margin="10" Click="SaveEdits_Click"/>
+                        HorizontalAlignment="Center" Margin="10" Click="SaveEdits_Click" IsEnabled="False"/>
                 <Button x:Name="Close" Content="Stäng" Width="100" Height="30" HorizontalAlignment="Center"
                         Click="Close_Click"/>
             </StackPanel>
             
 
-        </Grid>
     </Grid>
+    
 </Window>

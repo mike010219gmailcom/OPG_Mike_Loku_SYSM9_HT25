@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using OPG_Mike_Loku_SYSM9_HT25.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +21,31 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class RecipeDetailsWindow : Window
     {
-        public RecipeDetailsWindow()
+        private readonly RecipeManager _recipeManager;
+        private readonly RecipeModel _recipe;
+        private readonly User _currentUser;
+        private bool Editing = false;
+        public RecipeDetailsWindow(User currentUser, RecipeModel recipe, RecipeManager recipeManager)
         {
             InitializeComponent();
+            _currentUser = currentUser;
+            _recipe = recipe;
+            _recipeManager = recipeManager;
+            DataContext = _recipe;
+           
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+
+            if (_currentUser.Username != _recipe.CreatedBy && !_currentUser.IsAdmin)
+
+                CategoryBox.IsReadOnly = false;
+            TitleBox.IsReadOnly = false;
+            IngredientsBox.IsReadOnly = false;
+            InstructionsBox.IsReadOnly = false;
+            SaveEdits.IsEnabled = true;
+            
 
         }
 
@@ -36,7 +56,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
