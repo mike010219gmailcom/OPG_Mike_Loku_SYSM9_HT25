@@ -54,7 +54,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Details_Click(object sender, RoutedEventArgs e)
         {
-
+            if (RecipeList.SelectedItem is RecipeModel selectedRecipe)
+            {
+                RecipeDetailsWindow recipeDetailsWindow = new RecipeDetailsWindow(userManager.CurrentUser, selectedRecipe, recipeManager);
+                recipeDetailsWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Fel, välj ett recept från listan.");
+            }
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)

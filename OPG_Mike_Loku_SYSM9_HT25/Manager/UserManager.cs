@@ -86,6 +86,11 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             return false;
         }
 
+        public bool IsCurrentUserAdmin()
+        {
+            return CurrentUser.IsAdmin;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

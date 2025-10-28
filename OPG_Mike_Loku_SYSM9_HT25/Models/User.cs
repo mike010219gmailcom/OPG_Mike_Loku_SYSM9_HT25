@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
+    
     public class User
     {
+        public bool IsAdmin { get; set; } = false;
         public string Username { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
@@ -19,6 +21,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
 
     public class Admin : User
     {
-        
+        public Admin()
+        {
+            IsAdmin = true;
+        }
     }
 }

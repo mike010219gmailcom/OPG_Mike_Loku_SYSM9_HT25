@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using OPG_Mike_Loku_SYSM9_HT25.Models;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
@@ -28,9 +29,17 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             OnPropertyChanged(nameof(Recipe));
         }
 
-        public void RemoveRecipe (RecipeModel recipe)
+        public void RemoveRecipe (RecipeModel recipe, User currentUser)
         {
-            Recipe.Remove(recipe);
+            if (currentUser.IsAdmin || recipe.CreatedBy == currentUser.Username)
+            {
+                Recipe.Remove(recipe);
+                OnPropertyChanged(nameof(Recipe));
+            }
+            else
+            {
+                MessageBox.Show("Endast skaparen eller admin kan ta bort receptet.");
+            }
         }
 
         public void UpdateRecipe (RecipeModel recipe)
@@ -48,9 +57,17 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         }
 
 
-        public ObservableCollection <RecipeModel> GetRecipes ()
+        public ObservableCollection <RecipeModel> GetRecipes (User user)
         {
-            return Recipe;
+            if (user.IsAdmin)
+            {
+                return Recipe;
+            }
+            else
+            {
+                var userRecipes = new ObservableCollection<RecipeModel>(Recipe.Where(r => r.CreatedBy == user.Username));
+                return userRecipes;
+            }
         }
 
         
