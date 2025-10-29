@@ -33,6 +33,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             userManager = (UserManager)Application.Current.Resources["UserManager"];
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
             DataContext = this;
+
+
         }
 
         // Hantera klick på knapparna

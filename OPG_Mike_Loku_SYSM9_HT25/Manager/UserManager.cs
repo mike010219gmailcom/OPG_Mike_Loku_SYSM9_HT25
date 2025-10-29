@@ -1,6 +1,7 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
                 Password = "password"
             });
 
+            
+
             Users.Add(new User
             {
                 Username = "user",
@@ -64,6 +67,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
                 Password = "password"
             });
 
+           
         }
 
         // Registrerar en ny användare
