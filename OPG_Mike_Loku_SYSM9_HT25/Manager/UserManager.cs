@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 {
+    // Hanterar användare, inloggning och registrering
     public class UserManager : INotifyPropertyChanged
     {
+        // Privat lista över användare
         private List<User> _users;
 
+        // Offentlig egenskap för att komma åt användarlistan
         public List<User> Users
         {
             get { return _users; }
@@ -20,6 +23,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 
         private User? _currentUser;
 
+        // Visar inloggade användaren
         public User? CurrentUser
         {
             get { return _currentUser; }
@@ -41,6 +45,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             ExistingUsers();
         }
 
+        // Befintliga användare
         private void ExistingUsers()
         {
             Users.Add(new User
@@ -61,6 +66,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 
         }
 
+        // Registrerar en ny användare
         public bool RegisterUser(User newUser)
         {
             if (Users.Any(u => u.Username == newUser.Username))
@@ -71,7 +77,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             return true;
         }
 
-
+        // Loggar in en användare
         public bool Login()
         {
             foreach (User u in Users)
@@ -86,6 +92,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             return false;
         }
 
+        // kontroll om nuvarande användare är admin
         public bool IsCurrentUserAdmin()
         {
             return CurrentUser.IsAdmin;

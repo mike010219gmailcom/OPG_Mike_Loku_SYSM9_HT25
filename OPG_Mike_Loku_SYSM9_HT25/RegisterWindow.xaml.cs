@@ -26,15 +26,17 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             InitializeComponent();
         }
 
+        // Kod för registreringsknappen
         private void BtnRegister(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
 
+            // Spara input
             string username = UsernameInput.Text;
             string password = PasswordInput.Text;
             string country = (Country.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-
+            // Skapa ny användare
             User newUser = new User
             {
                 Username = username,
@@ -43,6 +45,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
                 DisplayName = username
             };
 
+            // Registrera användaren
             bool NewUserSucces = userManager.RegisterUser(newUser);
 
             if (NewUserSucces)

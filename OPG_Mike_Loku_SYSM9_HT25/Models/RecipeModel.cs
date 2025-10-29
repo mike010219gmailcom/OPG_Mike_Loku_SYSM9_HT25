@@ -8,6 +8,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
     public class RecipeModel
     {
+        // Egenskaper för receptet
         public string Title {  get; set; }
         public string Ingredients { get; set; }
         public string Instructions { get; set; }

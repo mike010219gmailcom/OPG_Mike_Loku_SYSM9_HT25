@@ -10,9 +10,12 @@ using OPG_Mike_Loku_SYSM9_HT25.Models;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 {
+    // Hanterar recept
     public class RecipeManager : INotifyPropertyChanged
     {
+        // Privat lista över recept
         private ObservableCollection<RecipeModel> _recipe = new ObservableCollection<RecipeModel>();
+        // Offentlig egenskap för att komma åt receptlistan
         public ObservableCollection<RecipeModel> Recipe
         {
             get => _recipe;
@@ -23,6 +26,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        // Metoder för att lägga till, ta bort och uppdatera recept
         public void AddRecipe(RecipeModel recipe)
         {
             Recipe.Add(recipe);
@@ -44,7 +48,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 
         public void UpdateRecipe (RecipeModel recipe)
         {
+            // Hitta det befintliga receptet baserat på titeln. DVS om titeln redan finns, uppdatera det receptet.
             var existingRecipe = Recipe.FirstOrDefault(r => r.Title == recipe.Title);
+
+            // Om receptet finns, uppdatera dess egenskaper
             if (existingRecipe != null)
             {
                 existingRecipe.Ingredients = recipe.Ingredients;
@@ -56,7 +63,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
-
+        // Hämta recept baserat på användarroll
         public ObservableCollection <RecipeModel> GetRecipes (User user)
         {
             if (user.IsAdmin)

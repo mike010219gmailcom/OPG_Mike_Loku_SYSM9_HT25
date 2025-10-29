@@ -82,6 +82,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             Close();
         }
 
+        // Avbryt ändringar
         private void CancelUpdate_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Ändringar avbrutet");

@@ -20,19 +20,23 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// Interaction logic for RecipeListWindow.xaml
     /// </summary>
     /// 
-    
+
+    // Huvudfönstret som visar receptlistan och hanterar användarinteraktioner
     public partial class RecipeListWindow : Window
     {
+        // Referenser till UserManager och RecipeManager
         public UserManager userManager { get; set; }
         public RecipeManager recipeManager { get; set; }
         public RecipeListWindow()
         {
+            // Hämta manager-instanser från applikationsresurser
             InitializeComponent();
             userManager = (UserManager)Application.Current.Resources["UserManager"];
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
             DataContext = userManager;
         }
 
+        // Hantera klick på knapparna
         private void UserDetails_Click(object sender, RoutedEventArgs e)
         {
             UserDetails userDetails = new UserDetails(userManager);

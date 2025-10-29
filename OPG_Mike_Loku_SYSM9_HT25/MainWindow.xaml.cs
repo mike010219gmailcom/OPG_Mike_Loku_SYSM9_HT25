@@ -28,15 +28,17 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        // Metod för att hantera inloggning
         private void LoginMainWindow(object sender, RoutedEventArgs e)
         {
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
-            
+
+            // Hämta användarnamn och lösenord från inmatningsfält
             bool loginSuccess = userManager.Login();
 
             if (loginSuccess)
             {
-                MessageBox.Show($"Välkommen {userManager.CurrentUser.Role}!");
+                MessageBox.Show($"Välkommen {userManager.CurrentUser.DisplayName}!");
                 RecipeListWindow recipeListWindow = new RecipeListWindow();
                 recipeListWindow.Show();
                 this.Close();
@@ -49,6 +51,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         }
 
+        // Öppna registreringsfönstret
         private void Register(object sender, RoutedEventArgs e)
         {
             // MessageBox.Show("funkar");

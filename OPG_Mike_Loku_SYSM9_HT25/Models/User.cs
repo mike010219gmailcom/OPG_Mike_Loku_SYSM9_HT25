@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
-    
+
+    // Bas användarklass
     public class User
     {
         public bool IsAdmin { get; set; } = false;
@@ -19,6 +20,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
 
     }
 
+    // Admin klass som ärver från User
     public class Admin : User
     {
         public Admin()
