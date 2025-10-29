@@ -14,11 +14,11 @@
         <StackPanel Orientation="Horizontal" Background="LightBlue" Grid.Row="0">
             <TextBlock Text="Dina uppgifter" FontSize="26" HorizontalAlignment="Center" Margin="10"/>
             <TextBlock Text="Användarnamn:" FontWeight="Bold" HorizontalAlignment="Center" Margin="20"/>
-            <TextBlock Text="{Binding CurrentUser.Username}" HorizontalAlignment="Center" Margin="5"/>
+            <TextBlock Text="{Binding CurrentUser.Username}" HorizontalAlignment="Center" Margin="5" Width="50" Height="20"/>
             <TextBlock Text="Lösenord:" FontWeight="Bold" HorizontalAlignment="Center" Margin="20"/>
-            <TextBlock Text="{Binding CurrentUser.Password}" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding CurrentUser.Password}" HorizontalAlignment="Center" Width="50" Height="20"/>
             <TextBlock Text="Land:" FontWeight="Bold" HorizontalAlignment="Center" Margin="20"/>
-            <TextBlock Text="{Binding CurrentUser.Country}" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding CurrentUser.Country}" HorizontalAlignment="Center" Width="50" Height="20"/>
         </StackPanel>
 
         <StackPanel Background="LightBlue" Grid.Row="1">

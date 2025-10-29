@@ -1,4 +1,5 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
+using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,14 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class UserDetails : Window
     {
+
         // props för att hålla nya detaljer
         private readonly UserManager _userManager;
-        private string NewUsername { get; set; }
-        private string NewPassword { get; set; }
-        private string ConfirmPassword { get; set; } 
-        private string SelectedCountry { get; set; }
+        public User CurrentUser { get; set; }
+        public string NewUsername { get; set; }
+        public string NewPassword { get; set; }
+        public string ConfirmPassword { get; set; } 
+        public string SelectedCountry { get; set; }
 
         // konstruktor
         public UserDetails(UserManager userManager)
@@ -33,8 +36,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             InitializeComponent();
 
             _userManager = userManager;
+            CurrentUser = _userManager.CurrentUser;
             DataContext = this;
-            DataContext = userManager.CurrentUser;
+            
         }
 
         private void UpdateDetails_Click(object sender, RoutedEventArgs e)

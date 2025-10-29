@@ -30,7 +30,7 @@
             
             <TextBlock Text="Receptlistan" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20"/>
 
-            <ListBox x:Name="RecipeList" DisplayMemberPath="Titel" Height="200" Margin="10"/>
+            <ListBox x:Name="RecipeList" DisplayMemberPath="Title" Height="200" Margin="10"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="AddRecipe" Content="Lägg till recept" Width="150" Height="30" 

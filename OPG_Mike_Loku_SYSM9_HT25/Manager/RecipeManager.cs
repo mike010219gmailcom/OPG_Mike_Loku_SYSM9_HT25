@@ -83,7 +83,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 
         private void OnPropertyChanged(string v)
         {
-            
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(v));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
