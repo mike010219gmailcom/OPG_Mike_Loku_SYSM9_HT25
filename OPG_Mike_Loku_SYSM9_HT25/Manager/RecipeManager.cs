@@ -79,7 +79,36 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
-
+        public List<RecipeModel> GetDefaultRecipes(string username)
+        {
+            return new List<RecipeModel>
+            {
+                new RecipeModel
+                {
+                    Title = "Spaghetti & Köttfärssås",
+                    Ingredients = "Spaghetti, Köttfärs, tomatsås, vitlök, olja, salt, pepper",
+                    Instructions = "1. Koka Spaghetti.\n" +
+                                   "2. Stek köttfärs med vitlök i olja.\n" +
+                                   "3. Tillsätt tomatsås och kryddor.\n" +
+                                   "4. Servera köttfärssås över Spaghetti.",
+                    Category = "Middag",
+                    Date = DateTime.Now,
+                    CreatedBy = username
+                },
+                new RecipeModel
+                {
+                    Title = "Pankakor",
+                    Ingredients = " Mjöl, ägg, mjölk, smör, socker, salt",
+                    Instructions = "1. Blanda mjöl, ägg, mjölk, socker och salt.\n" +
+                                   "2. Värm stekpanna med smör.\n" +
+                                   "3. Häll i smet och stek.\n" +
+                                   "4. Servera med sylt eller bär.",
+                    Category = "Frukost",
+                    Date = DateTime.Now,
+                    CreatedBy = username
+                }
+            };
+        }
 
 
 
