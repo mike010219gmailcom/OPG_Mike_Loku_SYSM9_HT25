@@ -1,4 +1,6 @@
-﻿namespace OPG_Mike_Loku_SYSM9_HT25.Models
+﻿using System.Collections.ObjectModel;
+
+namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
 
     // Bas användarklass
@@ -12,8 +14,12 @@
         public string Country { get; set; }
         public string CurrentUser { get; set; }
 
-        //Recipelist 
-        public List<Recipes> recipeList { get; set; }
+        public ObservableCollection<RecipeModel> PersonalRecipes { get; set; } 
+
+        public User()
+        {
+            PersonalRecipes = new ObservableCollection<RecipeModel>();
+        }
 
     }
 

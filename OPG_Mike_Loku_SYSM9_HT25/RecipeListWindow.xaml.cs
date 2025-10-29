@@ -70,7 +70,27 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-
+            // Kontrollera om ett recept är valt
+            if (RecipeList.SelectedItem is RecipeModel selectedRecipe)
+            {
+                // Kontrollera om användaren är skaparen eller admin
+                if (userManager.CurrentUser.Username != selectedRecipe.CreatedBy && !userManager.CurrentUser.IsAdmin)
+                {
+                    MessageBox.Show("Endast skaparen eller en administratör kan ta bort detta recept.");
+                    return;
+                }
+                // Bekräfta borttagning
+                var result = MessageBox.Show("Är du säker?", "Bekräfta borttagning", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    recipeManager.RemoveRecipe(selectedRecipe, userManager.CurrentUser);
+                    MessageBox.Show("Receptet har tagits bort.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fel, välj ett recept från listan.");
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
