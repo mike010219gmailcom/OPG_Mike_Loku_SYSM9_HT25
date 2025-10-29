@@ -1,18 +1,7 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Manager;
 using OPG_Mike_Loku_SYSM9_HT25.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OPG_Mike_Loku_SYSM9_HT25
 {
@@ -22,18 +11,28 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// 
 
     // Huvudfönstret som visar receptlistan och hanterar användarinteraktioner
-    public partial class RecipeListWindow : Window
+    public partial class RecipeListWindow : Window, INotifyPropertyChanged
     {
         // Referenser till UserManager och RecipeManager
         public UserManager userManager { get; set; }
         public RecipeManager recipeManager { get; set; }
+
+        public User CurrentUser
+        {
+            get => userManager.CurrentUser;
+            set
+            {
+                userManager.CurrentUser = value;
+                OnPropertyChanged(nameof(CurrentUser));
+            }
+        }
         public RecipeListWindow()
         {
             // Hämta manager-instanser från applikationsresurser
             InitializeComponent();
             userManager = (UserManager)Application.Current.Resources["UserManager"];
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
-            DataContext = userManager;
+            DataContext = this;
         }
 
         // Hantera klick på knapparna
@@ -72,6 +71,12 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

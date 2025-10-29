@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OPG_Mike_Loku_SYSM9_HT25.Models
+﻿namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
 
     // Bas användarklass
@@ -14,9 +8,12 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        public string DisplayName { get; set; } 
+        public string DisplayName { get; set; }
         public string Country { get; set; }
         public string CurrentUser { get; set; }
+
+        //Recipelist 
+        public List<Recipes> recipeList { get; set; }
 
     }
 
