@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using OPG_Mike_Loku_SYSM9_HT25.Models;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
 {
@@ -26,14 +21,21 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        public RecipeManager()
+        {
+            //Hämta usermanager/currentuser 
+            //currentUser.recipelist = Recipe
+        }
+
         // Metoder för att lägga till, ta bort och uppdatera recept
         public void AddRecipe(RecipeModel recipe)
         {
             Recipe.Add(recipe);
+
             OnPropertyChanged(nameof(Recipe));
         }
 
-        public void RemoveRecipe (RecipeModel recipe, User currentUser)
+        public void RemoveRecipe(RecipeModel recipe, User currentUser)
         {
             if (currentUser.IsAdmin || recipe.CreatedBy == currentUser.Username)
             {
@@ -46,7 +48,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
-        public void UpdateRecipe (RecipeModel recipe)
+        public void UpdateRecipe(RecipeModel recipe)
         {
             // Hitta det befintliga receptet baserat på titeln. DVS om titeln redan finns, uppdatera det receptet.
             var existingRecipe = Recipe.FirstOrDefault(r => r.Title == recipe.Title);
@@ -64,7 +66,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         }
 
         // Hämta recept baserat på användarroll
-        public ObservableCollection <RecipeModel> GetRecipes (User user)
+        public ObservableCollection<RecipeModel> GetRecipes(User user)
         {
             if (user.IsAdmin)
             {
@@ -77,13 +79,13 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
-        
+
 
 
 
         private void OnPropertyChanged(string v)
         {
-            
+
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
