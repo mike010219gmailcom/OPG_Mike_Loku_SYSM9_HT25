@@ -19,13 +19,15 @@ namespace OPG_Mike_Loku_SYSM9_HT25
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
         public MainWindow()
         {
             InitializeComponent();
             UserManager userManager = (UserManager)Application.Current.Resources["UserManager"];
             DataContext = userManager;
-        }
 
+
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
 
         // Metod för att hantera inloggning

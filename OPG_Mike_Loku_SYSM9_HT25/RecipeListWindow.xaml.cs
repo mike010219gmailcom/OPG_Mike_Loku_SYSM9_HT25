@@ -95,6 +95,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
                 if (result == MessageBoxResult.Yes)
                 {
                     recipeManager.RemoveRecipe(selectedRecipe, userManager.CurrentUser);
+                    userManager.CurrentUser.PersonalRecipes.Remove(selectedRecipe);
                     MessageBox.Show("Receptet har tagits bort.");
                 }
             }
