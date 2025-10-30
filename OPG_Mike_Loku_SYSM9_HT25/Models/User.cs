@@ -1,17 +1,59 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Models
 {
 
     // Bas användarklass
-    public class User
+    public class User : INotifyPropertyChanged
     {
         public bool IsAdmin { get; set; } = false;
-        public string Username { get; set; }
-        public string Password { get; set; }
+        private string _username;
+
+        // För några av propsen används OnPropertyChanged för att notifiera UI om ändringar
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged(nameof(Username));
+            }
+        }
+        
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
         public string Role { get; set; }
-        public string DisplayName { get; set; }
-        public string Country { get; set; }
+
+        private string _displayName;
+        public string DisplayName
+        {
+            get => _displayName;
+            set
+            {
+                _displayName = value;
+                OnPropertyChanged(nameof(DisplayName));
+            }
+        }
+        
+        private string _country;
+        public string Country
+        {
+            get => _country;
+            set
+            {
+                _country = value;
+                OnPropertyChanged(nameof(Country));
+            }
+        }
         public string CurrentUser { get; set; }
 
         public ObservableCollection<RecipeModel> PersonalRecipes { get; set; } 
@@ -46,7 +88,11 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
             });
         }
 
-
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     // Admin klass som ärver från User

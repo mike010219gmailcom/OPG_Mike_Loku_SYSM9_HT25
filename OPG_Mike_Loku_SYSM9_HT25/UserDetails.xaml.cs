@@ -81,6 +81,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             currentUser.Username = NewUsername;
             currentUser.Password = NewPassword;
             currentUser.Country = selectedCountry ?? currentUser.Country;
+            _userManager.CurrentUser.DisplayName = NewUsername;
 
             MessageBox.Show("Ändringar sparade");
             Close();

@@ -36,7 +36,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             InitializeComponent();
             userManager = (UserManager)Application.Current.Resources["UserManager"];
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
-            DataContext = this;
+            DataContext = userManager.CurrentUser;
+
+            RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
 
             if (CurrentUser != null)
             {

@@ -52,7 +52,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             Users.Add(new User
             {
                 Username = "admin",
-                DisplayName = "Administrator",
+                DisplayName = "Admin",
                 Role = "Admin",
                 Password = "password"
             });
@@ -62,7 +62,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             Users.Add(new User
             {
                 Username = "user",
-                DisplayName = Username,
+                DisplayName = "User",
                 Role = "User",
                 Password = "password"
             });
