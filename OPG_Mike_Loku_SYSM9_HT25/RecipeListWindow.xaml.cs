@@ -24,6 +24,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             {
                 userManager.CurrentUser = value;
                 OnPropertyChanged(nameof(CurrentUser));
+                if (CurrentUser != null)
+                {
+                    RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
+                }
             }
         }
         public RecipeListWindow()
@@ -33,6 +37,11 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             userManager = (UserManager)Application.Current.Resources["UserManager"];
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
             DataContext = this;
+
+            if (CurrentUser != null)
+            {
+                CurrentUser = userManager.CurrentUser;
+            }
 
 
         }

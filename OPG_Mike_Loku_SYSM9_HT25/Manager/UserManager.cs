@@ -66,7 +66,6 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
                 Role = "User",
                 Password = "password"
             });
-
            
         }
 

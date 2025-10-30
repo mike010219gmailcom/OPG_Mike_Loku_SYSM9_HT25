@@ -20,7 +20,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
         {
             PersonalRecipes = new ObservableCollection<RecipeModel>();
 
-            new RecipeModel
+            PersonalRecipes.Add(new RecipeModel
             {
                 Title = "Spaghetti & Köttfärssås",
                 Ingredients = "Spaghetti, Köttfärs, tomatsås, vitlök, olja, salt, pepper",
@@ -29,9 +29,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
                                    "3. Tillsätt tomatsås och kryddor.\n" +
                                    "4. Servera köttfärssås över Spaghetti.",
                 Category = "Middag",
+                CreatedBy = Username,
                 Date = DateTime.Now,
-            };
-            new RecipeModel
+            });
+            PersonalRecipes.Add(new RecipeModel
             {
                 Title = "Pankakor",
                 Ingredients = " Mjöl, ägg, mjölk, smör, socker, salt",
@@ -40,8 +41,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Models
                                    "3. Häll i smet och stek.\n" +
                                    "4. Servera med sylt eller bär.",
                 Category = "Frukost",
+                CreatedBy = Username,
                 Date = DateTime.Now,
-            };
+            });
         }
 
 
