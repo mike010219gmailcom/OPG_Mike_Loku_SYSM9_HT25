@@ -21,6 +21,29 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        // Hämta recept från alla användare om admin, annars bara för inloggad användare
+        public ObservableCollection<RecipeModel> GetREcipesAllUsers(User user, List<User> allUsers)
+        {
+            if (user.IsAdmin)
+            {
+                var allRecipes = new ObservableCollection<RecipeModel>();
+                foreach (var u in allUsers)
+                {
+                    foreach (var r in u.PersonalRecipes)
+                    {
+                        allRecipes.Add(r);
+                    }
+                }
+                return allRecipes;
+            }
+            else
+            {
+                return user.PersonalRecipes;
+            }
+        }
+            
+            
+
         public RecipeManager()
         {
             //Hämta usermanager/currentuser 
