@@ -41,9 +41,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             if (loginSuccess)
             {
 
+                RecipeManager recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
                 if (userManager.CurrentUser.IsAdmin)
                 {
-                    RecipeManager recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
                     recipeManager.LoadAllUserRecipes(userManager.Users);
                 }
 

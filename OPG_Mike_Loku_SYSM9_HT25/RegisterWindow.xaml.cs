@@ -36,13 +36,21 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             string password = PasswordInput.Text;
             string country = (Country.SelectedItem as ComboBoxItem)?.Content.ToString();
 
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(country))
+            {
+                MessageBox.Show("Du måste fylla i alla fält innan du kan registrera dig.");
+                return;
+            }
+
+
             // Skapa ny användare
             User newUser = new User
             {
                 Username = username,
                 Password = password,
                 Role = "User",
-                DisplayName = username
+                DisplayName = username,
+                Country = country,
             };
 
             // Registrera användaren
