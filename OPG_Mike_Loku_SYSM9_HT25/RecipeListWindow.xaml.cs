@@ -38,11 +38,22 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             recipeManager = (RecipeManager)Application.Current.Resources["RecipeManager"];
             DataContext = userManager.CurrentUser;
 
-            RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
+            RecipeList.ItemsSource = recipeManager.GetREcipesAllUsers(userManager.CurrentUser, userManager.Users);
+            //RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
 
             if (CurrentUser != null)
             {
                 CurrentUser = userManager.CurrentUser;
+            }
+
+            if (userManager.CurrentUser.IsAdmin)
+            {
+                recipeManager.LoadAllUserRecipes(userManager.Users);
+                RecipeList.ItemsSource = recipeManager.Recipe;
+            }
+            else
+            {
+                RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
             }
 
 
@@ -98,6 +109,16 @@ namespace OPG_Mike_Loku_SYSM9_HT25
                 {
                     recipeManager.RemoveRecipe(selectedRecipe, userManager.CurrentUser);
                     userManager.CurrentUser.PersonalRecipes.Remove(selectedRecipe);
+
+                    if (userManager.CurrentUser.IsAdmin)
+                    {
+                        RecipeList.ItemsSource = recipeManager.GetREcipesAllUsers(userManager.CurrentUser, userManager.Users);
+                    }
+                    else
+                    {
+                        RecipeList.ItemsSource = userManager.CurrentUser.PersonalRecipes;
+                    }
+
                     MessageBox.Show("Receptet har tagits bort.");
                 }
             }

@@ -88,6 +88,18 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        public void LoadAllUserRecipes(List<User> allUsers)
+        {
+            Recipe.Clear();
+            foreach (var user in allUsers)
+            {
+                foreach (var r in user.PersonalRecipes)
+                {
+                    Recipe.Add(r);
+                }
+            }
+        }
+
         // Hämta recept baserat på användarroll
         public ObservableCollection<RecipeModel> GetRecipes(User user)
         {
