@@ -49,7 +49,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
         // Befintliga användare
         private void ExistingUsers()
         {
-            Users.Add(new User
+            Users.Add(new Admin
             {
                 Username = "admin",
                 DisplayName = "Admin",

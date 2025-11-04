@@ -49,7 +49,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             if (userManager.CurrentUser.IsAdmin)
             {
                 recipeManager.LoadAllUserRecipes(userManager.Users);
-                RecipeList.ItemsSource = recipeManager.Recipe;
+                //RecipeList.ItemsSource = recipeManager.Recipe;
             }
             else
             {

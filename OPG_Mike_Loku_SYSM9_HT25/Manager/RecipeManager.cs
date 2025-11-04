@@ -1,6 +1,7 @@
 ﻿using OPG_Mike_Loku_SYSM9_HT25.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 
 namespace OPG_Mike_Loku_SYSM9_HT25.Manager
@@ -41,7 +42,6 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
                 return user.PersonalRecipes;
             }
         }
-            
             
 
         public RecipeManager()
