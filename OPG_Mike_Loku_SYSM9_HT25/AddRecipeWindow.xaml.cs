@@ -50,7 +50,8 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             {
                 NewRecipe.CreatedBy = _currentUser.Username;
                 NewRecipe.Date = DateTime.Now;
-                _recipeManager.AddRecipe(NewRecipe);
+                // Don't add directly to the manager master list here to avoid duplicates when admin aggregates from users.
+                //_recipeManager.AddRecipe(NewRecipe);
                 _currentUser.PersonalRecipes.Add(NewRecipe);
                 MessageBox.Show("Nytt recept tillagt!");
                 this.Close();

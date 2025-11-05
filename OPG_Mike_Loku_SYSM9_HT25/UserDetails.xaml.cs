@@ -45,7 +45,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         {
             var currentUser = _userManager.CurrentUser;
 
-            MessageBox.Show($"Inloggad: {currentUser.DisplayName}");
+            //MessageBox.Show($"Inloggad: {currentUser.DisplayName}");
 
             // Kontrollera användarnamn
             if (string.IsNullOrWhiteSpace(NewUsername) || NewUsername.Length < 3)
