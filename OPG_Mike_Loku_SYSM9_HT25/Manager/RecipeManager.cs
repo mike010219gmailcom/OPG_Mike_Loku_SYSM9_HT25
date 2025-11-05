@@ -58,6 +58,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             OnPropertyChanged(nameof(Recipe));
         }
 
+        // Ta bort recept om användaren är admin eller skaparen 
         public void RemoveRecipe(RecipeModel recipe, User currentUser)
         {
             if (currentUser.IsAdmin || recipe.CreatedBy == currentUser.Username)
@@ -88,6 +89,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25.Manager
             }
         }
 
+        // Ladda alla användares recept 
         public void LoadAllUserRecipes(List<User> allUsers)
         {
             Recipe.Clear();

@@ -83,8 +83,10 @@ namespace OPG_Mike_Loku_SYSM9_HT25
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
+            // Kontrollera om ett recept är valt
             if (RecipeList.SelectedItem is RecipeModel selectedRecipe)
             {
+                // Kontrollera om den inloggade användaren är skaparen eller admin
                 if (userManager.CurrentUser.Username != selectedRecipe.CreatedBy && !userManager.CurrentUser.IsAdmin)
                 {
                     MessageBox.Show("Endast skaparen eller en administratör kan ta bort detta recept.");
@@ -137,6 +139,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        // Info knapp
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Välkommen till CookMaster!\n" +

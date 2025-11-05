@@ -41,6 +41,7 @@ namespace OPG_Mike_Loku_SYSM9_HT25
         // Kod för knappen
         private void SaveNewRecipe_Click(object sender, RoutedEventArgs e)
         {
+            // Validering av inmatning
             if (string.IsNullOrWhiteSpace(NewRecipe.Title) || string.IsNullOrWhiteSpace(NewRecipe.Ingredients)
                 || string.IsNullOrWhiteSpace(NewRecipe.Category))
             {
@@ -48,10 +49,9 @@ namespace OPG_Mike_Loku_SYSM9_HT25
             }
             else
             {
+                // Lägg till det nya receptet
                 NewRecipe.CreatedBy = _currentUser.Username;
                 NewRecipe.Date = DateTime.Now;
-                // Don't add directly to the manager master list here to avoid duplicates when admin aggregates from users.
-                //_recipeManager.AddRecipe(NewRecipe);
                 _currentUser.PersonalRecipes.Add(NewRecipe);
                 MessageBox.Show("Nytt recept tillagt!");
                 this.Close();
